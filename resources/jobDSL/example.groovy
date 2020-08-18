@@ -16,7 +16,7 @@ for(project in projects) {
         definition {
             cps {
                 sandbox(true)
-                script("""@Library('devtail-ci-lib@master') _
+                script("""@Library('dvdmelamed-ci-lib@master') _
 printDockerVersion()
                 """)
             }
