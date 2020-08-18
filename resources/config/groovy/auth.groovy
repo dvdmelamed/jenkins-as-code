@@ -28,10 +28,10 @@ Jenkins.instance.setSecurityRealm(github_realm)
 def strategy = new GlobalMatrixAuthorizationStrategy()
 
 // Give admin access to fishi0x01 user
-strategy.add(Jenkins.ADMINISTER, "fishi0x01")
+strategy.add(Jenkins.ADMINISTER, "dvdmelamed")
 
 // Give admin access to my_team_name
-strategy.add(Jenkins.ADMINISTER, "devtail*Admin")
+strategy.add(Jenkins.ADMINISTER, "dvdmelamed*Admin")
 
 // wrap up
 Jenkins.instance.setAuthorizationStrategy(strategy)
