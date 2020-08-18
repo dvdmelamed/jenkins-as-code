@@ -19,7 +19,7 @@ jenkins:
   authorizationStrategy:
     globalMatrix:
       grantedPermissions:
-        - "Overall/Administer:devtail*Admin"
+        - "Overall/Administer:dvdmelamed*Admin"
         - "Overall/Administer:admin"
 
   securityRealm:
@@ -29,48 +29,6 @@ jenkins:
       clientID: "${jenkins-tokens/github-oauth-client-id}"
       clientSecret: "${jenkins-tokens/github-oauth-client-secret}"
       oauthScopes: "read:org,user:email"
-
-  nodes:
-    - permanent:
-        labelString: "docker"
-        name: "docker-agent-1"
-        nodeName: "docker-agent-1"
-        numExecutors: 2
-        remoteFS: "/home/ubuntu"
-        launcher:
-          setupSlaveLauncher:
-            startScript: "java -jar /var/jenkins_home/war/WEB-INF/jenkins-cli.jar -s http://localhost:8080 -ssh -user admin -i /var/jenkins_home/jenkins-ssh-keys/ssh-agent-access-key build 'Admin/AWSAgentBootstrap' -p agentID='0' -s"
-            stopScript: "java -jar /var/jenkins_home/war/WEB-INF/jenkins-cli.jar -s http://localhost:8080 -ssh -user admin -i /var/jenkins_home/jenkins-ssh-keys/ssh-agent-access-key build 'Admin/AWSAgentDestroy' -p agentID='0' -s"
-            launcher:
-              sSHLauncher:
-                credentialsId: "ssh-agent-access-key"
-                host: "18.195.157.53"
-                workDir: "/home/ubuntu"
-                sshHostKeyVerificationStrategy: "nonVerifyingKeyVerificationStrategy"
-        retentionStrategy:
-          demand: 
-            idleDelay: 1000
-            inDemandDelay: 0
-    - permanent:
-        labelString: "docker"
-        name: "docker-agent-2"
-        nodeName: "docker-agent-2"
-        numExecutors: 2
-        remoteFS: "/home/ubuntu"
-        launcher:
-          setupSlaveLauncher:
-            startScript: "java -jar /var/jenkins_home/war/WEB-INF/jenkins-cli.jar -s http://localhost:8080 -ssh -user admin -i /var/jenkins_home/jenkins-ssh-keys/ssh-agent-access-key build 'Admin/AWSAgentBootstrap' -p agentID='1' -s"
-            stopScript: "java -jar /var/jenkins_home/war/WEB-INF/jenkins-cli.jar -s http://localhost:8080 -ssh -user admin -i /var/jenkins_home/jenkins-ssh-keys/ssh-agent-access-key build 'Admin/AWSAgentDestroy' -p agentID='1' -s"
-            launcher:
-              sSHLauncher:
-                credentialsId: "ssh-agent-access-key"
-                host: "3.122.182.67"
-                workDir: "/home/ubuntu"
-                sshHostKeyVerificationStrategy: "nonVerifyingKeyVerificationStrategy"
-        retentionStrategy:
-          demand: 
-            idleDelay: 1000
-            inDemandDelay: 0
 
 security:
   globalJobDslSecurityConfiguration:
@@ -143,12 +101,12 @@ unclassified:
 
   globalLibraries:
     libraries:
-      - name: "devtail-ci-lib"
+      - name: "dvdmelamed-ci-lib"
         retriever:
           modernSCM:
             scm:
               git:
-                remote: "git@github.com:devtail/jenkins-as-code.git"
+                remote: "git@github.com:dvdmelamed/jenkins-as-code.git"
                 credentialsId: "deploy-key-shared-library"
 
   simple-theme-plugin:
@@ -158,7 +116,7 @@ unclassified:
 
   slackNotifier:
     teamDomain: "devtail"
-    baseUrl: "https://devtail.slack.com/services/hooks/jenkins-ci/"
+    baseUrl: "https://dvdmelamed.slack.com/services/hooks/jenkins-ci/"
     tokenCredentialId: "slack-token"
 
   githubpluginconfig:
