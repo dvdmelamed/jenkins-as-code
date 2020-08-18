@@ -26,7 +26,7 @@ pipelineJob("Admin/Configure") {
             scm {
                 git {
                     remote {
-                        github("devtail/jenkins-as-code", "ssh")
+                        github("dvdmelamed/jenkins-as-code", "ssh")
                         credentials("deploy-key-shared-library")
                     }
 
