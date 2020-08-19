@@ -8,7 +8,7 @@
  * plugin (github-oauth) to be installed. It is 
  * tested with github-oauth:0.29
  */
-
+/*
 import hudson.security.SecurityRealm
 import org.jenkinsci.plugins.GithubSecurityRealm
 import jenkins.model.*
@@ -36,3 +36,4 @@ strategy.add(Jenkins.ADMINISTER, "dvdmelamed*Admin")
 // wrap up
 Jenkins.instance.setAuthorizationStrategy(strategy)
 Jenkins.instance.save()
+*/
